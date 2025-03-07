@@ -41,4 +41,4 @@ git clone -b WinMetWorking https://github.com/CANFLUX/EddyPro_API.git --recurse-
 
 3. run the install script (cd into EddyPro_API first)
 
-python EddyPro_API\pyDbTools\setupPyVenv\install.py
+python pyDbTools\setupPyVenv\install.py
