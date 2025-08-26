@@ -110,7 +110,7 @@ class eddyProAPI():
         with open('config_files/ecFileFormats.yml') as yml:
             self.config.update(yaml.safe_load(yml))
         self.config['siteID'] = self.siteID
-        groupID = '\d+'
+        groupID = r'\d+'
         self.genericID = eval(self.config['stringTags']['groupID'])
         # Exit if user paths are not provided
         if os.path.isfile('config_files/user_path_definitions.yml'):
@@ -598,7 +598,7 @@ class eddyProAPI():
 
     def makeBatch(self,groupID,project_id,groupInfo,batchStart,batchEnd,batchCount):
         id = f'group_{groupID}'
-        file_name = f"{self.tempDir}\{project_id}.eddypro"
+        file_name = f"{self.tempDir}{os.path.sep}{project_id}.eddypro"
         if '_rp_' in file_name:
             self.rpBatches[file_name] = self.fileInventory.loc[((self.fileInventory.index>=batchStart)&
                                            (self.fileInventory.index<=batchEnd)&
@@ -711,17 +711,17 @@ class eddyProAPI():
             os.makedirs(d_out)
         batchProcessing.pasteWithSubprocess(d_in,d_out,option='xcopy')
         shutil.rmtree(d_in)
-        if self.biometUser and os.path.isdir(self.config['relDir']['Database']):
-            for outFile,metaData in self.config['fccFinalOutputs'].items():
-                toDump = fnmatch.filter(os.listdir(d_out),f'*{outFile}*')
-                for td in toDump:
-                    print(td)
-                    dumpToBiometDatabase(siteID=self.siteID,
-                                        database = self.config['relDir']['Database'],
-                                        inputFile=f"{d_out}/{td}",
-                                        metaData=metaData,
-                                        stage='epOutputs',
-                                        tag=self.name)
+#        if self.biometUser and os.path.isdir(self.config['relDir']['Database']):
+#            for outFile,metaData in self.config['fccFinalOutputs'].items():
+#                toDump = fnmatch.filter(os.listdir(d_out),f'*{outFile}*')
+#                for td in toDump:
+#                    print(td)
+#                    dumpToBiometDatabase(siteID=self.siteID,
+#                                        database = self.config['relDir']['Database'],
+#                                        inputFile=f"{d_out}/{td}",
+#                                        metaData=metaData,
+#                                        stage='epOutputs',
+#                                        tag=self.name)
 
 # If called from command line ...
 if __name__ == '__main__':

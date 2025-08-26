@@ -81,7 +81,7 @@ class progressbar():
     def show(self,j):
         if self.items > 0:
             x = int(self.size*j/self.items)
-            print(f"{self.prefix}[{u'█'*x}{('.'*(self.size-x))}] {j}/{self.items}", end='\r', file=self.out, flush=True)
+ #           print(f"{self.prefix}[{u'█'*x}{('.'*(self.size-x))}] {j}/{self.items}", end='\r', file=self.out, flush=True)
 
     def step(self,step_size=1):
         self.i+=step_size

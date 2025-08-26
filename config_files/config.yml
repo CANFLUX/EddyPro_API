@@ -6,9 +6,10 @@
 
 RelativePaths:
   # RelativePaths will dynamically added to a "Paths" section below using eval statements
-  sourceDir: f"{self.config['relDir']['HighFrequency']}/{self.siteID}/raw/"
-  metaDir: f"{self.config['relDir']['HighFrequency']}/{self.siteID}/metadata/"
-  outputDir: f"{self.config['relDir']['HighFrequency']}/{self.siteID}/eddyProAPIOutputs/"
+  #sourceDir: f"{self.config['relDir']['HighFrequency']}/{self.siteID}/raw/"
+  sourceDir: f"{self.config['relDir']['HighFrequency']}/{self.siteID}/HighFrequencyData/raw/"
+  metaDir: f"{self.config['relDir']['outDir']}/eddyProAPIOutputs/{self.siteID}/metadata/"
+  outputDir: f"{self.config['relDir']['outDir']}/eddyProAPIOutputs/{self.siteID}/"
   baseEddyPro: f"{self.config['rootDir']['EddyPro']}/bin/"
 
 metadataFiles:
